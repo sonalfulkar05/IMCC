@@ -68,7 +68,12 @@ class BST:
         while temp.right:
             temp = temp.right
         print("Max:", temp.data)
-
+    def count_leaf_nodes(self, root):
+        if root is None:
+            return 0
+        if root.left is None and root.right is None:
+            return 1
+        return self.count_leaf_nodes(root.left) + self.count_leaf_nodes(root.right)
 
 # Driver code
 b1 = BST()
@@ -90,3 +95,4 @@ print("\nPostorder:")
 b1.postorder(b1.root)
 
 b1.findminmax()
+print("\nLeaf nodes:", b1.count_leaf_nodes(b1.root))
