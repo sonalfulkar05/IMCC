@@ -35,6 +35,11 @@ class BST:
                 else:
                     print("Duplicate value not allowed")
                     return
+    def count_nodes(self, root):
+        if root is None:
+            return 0
+        else:
+            return 1 + self.count_nodes(root.left) + self.count_nodes(root.right)
 
     # inorder traversal
     def inorder(self, root):
