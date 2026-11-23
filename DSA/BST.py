@@ -74,7 +74,12 @@ class BST:
         if root.left is None and root.right is None:
             return 1
         return self.count_leaf_nodes(root.left) + self.count_leaf_nodes(root.right)
-
+    def count_nonleaf_nodes(self, root):
+        if root is None:
+            return 0
+        if root.left is None and root.right is None:
+            return 0
+        return 1 + self.count_nonleaf_nodes(root.left) + self.count_nonleaf_nodes(root.right)
 # Driver code
 b1 = BST()
 b1.insert(Node(100))
@@ -96,3 +101,4 @@ b1.postorder(b1.root)
 
 b1.findminmax()
 print("\nLeaf nodes:", b1.count_leaf_nodes(b1.root))
+print("Non-leaf nodes:", b1.count_nonleaf_nodes(b1.root))
