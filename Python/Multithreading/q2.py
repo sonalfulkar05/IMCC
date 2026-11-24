@@ -1,3 +1,4 @@
+# Join function makes one thread wait until another thread finishes execut
 from threading import Thread
 from time import sleep
 def task():
