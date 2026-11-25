@@ -80,6 +80,54 @@ class BST:
         if root.left is None and root.right is None:
             return 0
         return 1 + self.count_nonleaf_nodes(root.left) + self.count_nonleaf_nodes(root.right)
+    # def del_node(self, rt, val):
+    #     if rt is None:
+    #         return rt
+    #     if val < rt.data:
+    #         rt.left = self.del_node(rt.left, val)
+    #     elif val < rt.data:
+    #         rt.right = self.del_node(rt.right, val)
+    #     else:
+    #         if rt.left is None: # node with right child only
+    #             return rt.right
+    #         if root.right is None: # node with left child only
+    #             return rt.left
+    #         #node has both left and right children
+    #         succ = self.get_successor(rt)
+    #         rt.data = succ.data
+    #         rt.right = self.del_node(rt.right, succ.data)
+    #         return rt
+    # def get_successor(self, temp):
+    #     temp = temp.right
+    #     while temp.left is  not None:
+    #         temp = temp.left
+    #     return temp
+    def del_node(self, rt, val):
+        if rt is None:
+            return rt
+        if val < rt.data:
+            rt.left = self.del_node(rt.left, val)
+        elif val > rt.data:
+            rt.right = self.del_node(rt.right, val)
+        else:
+            # Node with only one child or no child
+            if rt.left is None:
+                return rt.right
+            elif rt.right is None:
+                return rt.left
+
+            # Node with two children: Get the inorder successor (smallest in the right subtree)
+            succ = self.get_successor(rt)
+            rt.data = succ.data  # Copy the inorder successor's content to this node
+            rt.right = self.del_node(rt.right, succ.data)  # Delete the inorder successor
+
+        return rt
+    def get_successor(self, temp):
+        temp = temp.right
+        while temp.left is not None:
+            temp = temp.left
+        return temp
+             
 # Driver code
 b1 = BST()
 b1.insert(Node(100))
@@ -102,3 +150,8 @@ b1.postorder(b1.root)
 b1.findminmax()
 print("\nLeaf nodes:", b1.count_leaf_nodes(b1.root))
 print("Non-leaf nodes:", b1.count_nonleaf_nodes(b1.root))
+print("before deletion:", end=" ")
+b1.inorder(b1.root)
+b1.del_node(b1.root,10)
+print("\nafter deletion:",end=" ")
+b1.inorder(b1.root)
