@@ -127,7 +127,15 @@ class BST:
         while temp.left is not None:
             temp = temp.left
         return temp
-             
+    def search(self, rt, val):
+        if rt is None:
+            return False
+        if val == rt.data:
+            return True
+        elif val < rt.data:
+            return self.search(rt.left, val)
+        else:
+            return self.search(rt.right, val)        
 # Driver code
 b1 = BST()
 b1.insert(Node(100))
@@ -155,3 +163,4 @@ b1.inorder(b1.root)
 b1.del_node(b1.root,10)
 print("\nafter deletion:",end=" ")
 b1.inorder(b1.root)
+print("\nSearching for 65:", b1.search(b1.root, 65))
