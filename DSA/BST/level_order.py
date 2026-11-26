@@ -46,14 +46,20 @@ class BST:
         arr = []
         cnt = 0 # for counting visited nodes
         arr.append(self.root)
+        level = 0
         while cnt < len(arr) :
-            temp = arr[cnt]
-            cnt += 1
-            print(temp.data, end=" ")
-            if temp.left is not None:
-                arr.append(temp.left)
-            if temp.right is not None:
-                arr.append(temp.right)
+            node_counter = len(arr) - cnt
+            print("\n level:", level, end = " ")
+            print("\n", end = " ")
+            for i in range(node_counter):
+                temp = arr[cnt]
+                cnt += 1
+                print(temp.data, end=" ")
+                if temp.left is not None:
+                    arr.append(temp.left)
+                if temp.right is not None:
+                    arr.append(temp.right)
+            level += 1
 
 b1 = BST()
 b1.insert(Node(100))
