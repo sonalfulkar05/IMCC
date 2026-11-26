@@ -7,6 +7,7 @@ def greet():
     
     
 def greet2():
+    time.sleep(5)
     print("Hello2")
     
     
@@ -20,5 +21,9 @@ t3 = threading.Thread(target=greet3)
 
 
 t1.start()
+t1.join()
 t2.start()
 t3.start()
+
+
+print("main program ended")

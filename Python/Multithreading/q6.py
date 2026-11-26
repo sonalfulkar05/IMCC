@@ -2,11 +2,11 @@
 import threading
 import time
 def square(num):
- print(f"Square: {num * num}")
- time.sleep(1)
+    print(f"Square: {num * num}")
+    time.sleep(1)
 def cube(num):
- print(f"Cube: {num * num * num}")
- time.sleep(2)
+    print(f"Cube: {num * num * num}")
+    time.sleep(2)
 
 # Create threads using threading module.thread function
 t1 = threading.Thread(target=square, args=(4,)) #args takes tuple so give
