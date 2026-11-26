@@ -60,6 +60,7 @@ class BST:
                 if temp.right is not None:
                     arr.append(temp.right)
             level += 1
+        print("\nHeight of tree:", level-1)
 
 b1 = BST()
 b1.insert(Node(100))
