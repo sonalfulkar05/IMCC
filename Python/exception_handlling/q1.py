@@ -4,8 +4,8 @@ try:
     result = a / b
     print("Result:", result)
     
-except:
-    print("something wrong")
+except ZeroDivisionError as e:
+    print(e)
     
 print("program completed")
     
